@@ -27,5 +27,20 @@ public class TestPolimorfismo {
         var adventureMovie=new Adventure("Vengadores");
         adventureMovie.watchAdventure();
 
+        System.out.println("******************************");
+        Object unknowObject= Movie.getMovie("A", "Vengadores");
+        if(unknowObject.getClass().getSimpleName()=="Comedy"){
+            Comedy c=(Comedy)unknowObject;
+            c.watchComedy();
+        }
+        if (unknowObject instanceof Adventure){
+            ((Adventure)unknowObject).watchAdventure();
+        }
+
+        //Esto se conoce como pattern matching for the instance operator
+        //es parte de java 16
+        if (unknowObject instanceof ScienceFiction sfy){
+            sfy.watchScienceFiction();
+        }
     }
 }
